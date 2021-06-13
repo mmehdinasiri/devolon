@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Image } from "..";
 import { CatCard as StyledCatCard, CatCardTitle } from "./CatCard.element";
 
 interface ICatCardProps {
@@ -8,7 +9,7 @@ interface ICatCardProps {
 const CatCard: FC<ICatCardProps> = ({ catImg, catId }) => {
   return (
     <StyledCatCard>
-      <img src={catImg} alt="catImage" />
+      <Image src={catImg} alt="cat-image" ratio="4-3" radiusTop />
       <CatCardTitle>Cat Id: {catId}</CatCardTitle>
     </StyledCatCard>
   );
