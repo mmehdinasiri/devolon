@@ -1,11 +1,19 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { Aside, Loading } from "src/theme/globalStyle";
-import { RootState } from "src/store";
+import { RootState, useAppDispatch } from "src/store";
+import { reset } from "src/store/reducer/cats.reducer";
+import { getCats } from "src/store/actions/cats.action";
 import { SidebarTitle, CategoryWrapper, CategoryItem } from "./SideBar.element";
 
 const SideBar: FC = () => {
+  const dispatch = useAppDispatch();
   const categories = useSelector((state: RootState) => state.categories);
+
+  const handelSelectCategory = (id: number) => {
+    dispatch(reset());
+    dispatch(getCats({ category: id, page: 1 }));
+  };
   return (
     <Aside>
       {categories.loading && <Loading />}
@@ -13,7 +21,12 @@ const SideBar: FC = () => {
       <CategoryWrapper>
         {categories.categories &&
           categories.categories.map((item: ICatCategory) => (
-            <CategoryItem key={item.id}>{item.name}</CategoryItem>
+            <CategoryItem
+              key={item.id}
+              onClick={() => handelSelectCategory(item.id)}
+            >
+              {item.name}
+            </CategoryItem>
           ))}
       </CategoryWrapper>
     </Aside>
