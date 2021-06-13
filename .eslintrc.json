@@ -27,7 +27,11 @@
   },
   "rules": {
     "linebreak-style": "off",
+    "import/no-cycle": "off",
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
     "prettier/prettier": [
       "error",
       {
