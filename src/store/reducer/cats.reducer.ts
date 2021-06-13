@@ -17,7 +17,7 @@ const catSlice = createSlice({
   name: "cats",
   initialState,
   reducers: {
-    reset: () => initialState,
+    resetCateList: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(getCats.pending, (state) => {
@@ -33,5 +33,5 @@ const catSlice = createSlice({
     });
   },
 });
-export const { reset } = catSlice.actions;
+export const { resetCateList } = catSlice.actions;
 export default catSlice;

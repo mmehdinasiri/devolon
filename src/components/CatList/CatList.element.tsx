@@ -22,3 +22,8 @@ export const CatContainer = styled.div`
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 `;
+
+export const CatCategory = styled.h2`
+  text-transform: capitalize;
+  margin: 1rem 0 0;
+`;

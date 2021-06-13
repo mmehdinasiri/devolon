@@ -6,7 +6,7 @@ export const SidebarTitle = styled.span`
   padding: 1rem;
 `;
 
-export const CategoryWrapper = styled.ul`
+export const CategoryList = styled.ul`
   list-style: none;
   padding-left: 0;
   margin: 0;
@@ -23,5 +23,9 @@ export const CategoryItem = styled.li`
   &.active {
     background-color: ${({ theme }) => theme.color.primary};
     color: white;
+  }
+
+  &.active {
+    pointer-events: none;
   }
 `;
