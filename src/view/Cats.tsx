@@ -9,7 +9,7 @@ import { reset } from "src/store/reducer/cats.reducer";
 
 const Cats: FC = () => {
   const dispatch = useAppDispatch();
-  const categories = useSelector((state: RootState) => state.categories);
+  const categoriesStore = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -19,10 +19,8 @@ const Cats: FC = () => {
   }, []);
 
   useDidMountEffect(() => {
-    if (categories.categories[0]?.id) {
-      dispatch(getCats({ category: categories.categories[0].id, page: 0 }));
-    }
-  }, [categories.categories]);
+    dispatch(getCats({ category: categoriesStore.categories[0].id, page: 0 }));
+  }, [categoriesStore.categories]);
   return (
     <Layout hasSidebar>
       <CatList />
