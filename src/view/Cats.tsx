@@ -1,9 +1,11 @@
 import { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { CatList, Layout } from "src/components";
+import useDidMountEffect from "src/hooks/useDidMountEffect";
 import { RootState, useAppDispatch } from "src/store";
 import { getCategories } from "src/store/actions/category.action";
 import { getCats } from "src/store/actions/cats.action";
+import { reset } from "src/store/reducer/cats.reducer";
 
 const Cats: FC = () => {
   const dispatch = useAppDispatch();
@@ -11,13 +13,16 @@ const Cats: FC = () => {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, [dispatch]);
+    return () => {
+      dispatch(reset());
+    };
+  }, []);
 
-  useEffect(() => {
+  useDidMountEffect(() => {
     if (categories.categories[0]?.id) {
       dispatch(getCats({ category: categories.categories[0].id, page: 0 }));
     }
-  }, [categories, dispatch]);
+  }, [categories.categories]);
   return (
     <Layout hasSidebar>
       <CatList />
