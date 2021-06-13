@@ -8,7 +8,7 @@ import { SidebarTitle, CategoryWrapper, CategoryItem } from "./SideBar.element";
 
 const SideBar: FC = () => {
   const dispatch = useAppDispatch();
-  const categories = useSelector((state: RootState) => state.categories);
+  const categoriesStore = useSelector((state: RootState) => state.categories);
 
   const handelSelectCategory = (id: number) => {
     dispatch(reset());
@@ -16,11 +16,11 @@ const SideBar: FC = () => {
   };
   return (
     <Aside>
-      {categories.loading && <Loading />}
+      {categoriesStore.loading && <Loading />}
       <SidebarTitle>Categories</SidebarTitle>
       <CategoryWrapper>
-        {categories.categories &&
-          categories.categories.map((item: ICatCategory) => (
+        {categoriesStore.categories &&
+          categoriesStore.categories.map((item: ICatCategory) => (
             <CategoryItem
               key={item.id}
               onClick={() => handelSelectCategory(item.id)}
