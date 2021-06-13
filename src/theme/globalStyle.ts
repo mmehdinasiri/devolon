@@ -47,3 +47,25 @@ export const MainContent = styled.main`
   width: calc(100% - ${({ theme }) => theme.sizes.sideBarWidth}px);
   float: right;
 `;
+export const Container = styled.div`
+  position: relative;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media ${device.mobile} {
+    max-width: calc(540px - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  }
+  @media ${device.tablet} {
+    max-width: calc(720px - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  }
+  @media ${device.laptop} {
+    max-width: calc(960px - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  }
+  @media ${device.desktop} {
+    max-width: calc(1140px - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  }
+  @media ${device.desktopL} {
+    max-width: calc(1320px - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  }
+`;
