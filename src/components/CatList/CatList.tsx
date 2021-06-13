@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { CatCard } from "..";
 import { CatContainer } from "./CatList.element";
 
 const cats = [
@@ -88,7 +89,9 @@ const CatList: FC = () => {
     <div>
       <CatContainer>
         {cats &&
-          cats.map((catItem: ICat) => <div key={catItem.id}>{catItem.id}</div>)}
+          cats.map((catItem: ICat) => (
+            <CatCard key={catItem.id} catImg={catItem.url} catId={catItem.id} />
+          ))}
       </CatContainer>
     </div>
   );
