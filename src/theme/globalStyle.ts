@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -13,3 +13,14 @@ body {
 }
 `;
 export default GlobalStyle;
+
+export const Aside = styled.aside`
+  position: fixed;
+  width: ${({ theme }) => theme.sizes.sideBarWidth}px;
+  background-color: ${({ theme }) => theme.color.bodyBg};
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  top: ${({ theme }) => theme.sizes.headerHight}px;
+  left: 0;
+`;
