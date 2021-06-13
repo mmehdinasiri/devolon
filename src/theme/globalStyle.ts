@@ -15,6 +15,7 @@ export const device = {
   desktopL: `(min-width: ${size.desktopL})`,
 };
 
+// gl
 const GlobalStyle = createGlobalStyle`
 html {
 	scroll-behavior: smooth;
@@ -29,6 +30,7 @@ body {
 `;
 export default GlobalStyle;
 
+// Layout
 export const Aside = styled.aside`
   position: fixed;
   width: ${({ theme }) => theme.sizes.sideBarWidth}px;
@@ -38,4 +40,10 @@ export const Aside = styled.aside`
   flex-direction: column;
   top: ${({ theme }) => theme.sizes.headerHight}px;
   left: 0;
+`;
+export const MainContent = styled.main`
+  margin: ${({ theme }) => theme.sizes.headerHight}px 0;
+  padding-top: 1rem;
+  width: calc(100% - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  float: right;
 `;
