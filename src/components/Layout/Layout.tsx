@@ -1,6 +1,6 @@
 import { FC } from "react";
+import { Container, MainContent } from "src/theme/globalStyle";
 import { Navbar, Sidebar } from "..";
-import { Container, MainContent } from "../../theme/globalStyle";
 
 interface ILayoutProps {
   children: React.ReactNode;

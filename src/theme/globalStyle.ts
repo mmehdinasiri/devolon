@@ -15,7 +15,6 @@ export const device = {
   desktopL: `(min-width: ${size.desktopL})`,
 };
 
-// gl
 const GlobalStyle = createGlobalStyle`
 html {
 	scroll-behavior: smooth;
@@ -67,5 +66,47 @@ export const Container = styled.div`
   }
   @media ${device.desktopL} {
     max-width: calc(1320px - ${({ theme }) => theme.sizes.sideBarWidth}px);
+  }
+`;
+export const Loading = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 20;
+    min-height: 3rem;
+  }
+
+  &::after {
+    content: "";
+    border: 6px solid ${({ theme }) => theme.color.primary};
+    border-top: 6px solid ${({ theme }) => theme.color.primaryLight};
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1000ms linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 21;
+    margin: -15px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;

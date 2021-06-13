@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../theme/globalStyle";
+import { device } from "src/theme/globalStyle";
 
 export const CatContainer = styled.div`
   display: grid;
