@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { StyledImage, StyledImageContent } from "./image.element";
+import { Skeleton, StyledImage, StyledImageContent } from "./image.element";
 
 interface IImagePops {
   src: string;
@@ -10,27 +10,24 @@ interface IImagePops {
 
 const Image: FC<IImagePops> = ({ src, alt, ratio, radiusTop }) => {
   const [imageError, setImageError] = useState<boolean>(false);
+  const [imageLoad, setImageLoad] = useState<boolean>(false);
   return (
     <StyledImage
       className={`ratio-box-${ratio} ${radiusTop ? "border-radius-top" : ""}`}
     >
+      {!imageLoad && <Skeleton />}
       <StyledImageContent>
-        {!src || imageError ? (
-          <img
-            src="images/image-placeholder.jpg"
-            alt="placeholder"
-            style={{ width: "100%" }}
-          />
-        ) : (
-          <img
-            src={src}
-            alt={alt}
-            style={{ width: "100%" }}
-            onError={() => {
-              setImageError(true);
-            }}
-          />
-        )}
+        <img
+          src={imageError ? "images/image-placeholder.jpg" : src}
+          alt={alt}
+          style={{ width: "100%" }}
+          onError={() => {
+            setImageError(true);
+          }}
+          onLoad={() => {
+            setImageLoad(true);
+          }}
+        />
       </StyledImageContent>
     </StyledImage>
   );

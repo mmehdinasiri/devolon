@@ -7,7 +7,9 @@ const theme = {
     primaryDark: "#7c3390",
     bodyBg: "#f5f5f5",
     headerBg: "#38213d",
+    skeletonBg: "#d3d3d3",
   },
+
   sizes: {
     headerHight: 48,
     sideBarWidth: 180,
