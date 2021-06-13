@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { FC, lazy, Suspense } from "react";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import GlobalStyle from "./theme/globalStyle";
+import GlobalStyle, { Loading } from "./theme/globalStyle";
 import theme from "./theme/theme";
-import { Cats, Home } from "./view";
+// import { Cats, Home } from "./view";
+const Cats = lazy(() => import("./view/Cats"));
+const Home = lazy(() => import("./view/Home"));
 
 const App: FC = () => {
   return (
@@ -12,10 +14,14 @@ const App: FC = () => {
       <Router>
         <Switch>
           <Route path="/cats" exact>
-            <Cats />
+            <Suspense fallback={<Loading />}>
+              <Cats />
+            </Suspense>
           </Route>
           <Route path="/">
-            <Home />
+            <Suspense fallback={<Loading />}>
+              <Home />
+            </Suspense>
           </Route>
         </Switch>
       </Router>
