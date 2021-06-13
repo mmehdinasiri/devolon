@@ -15,11 +15,11 @@ const Cats: FC = () => {
 
   useEffect(() => {
     if (categories.categories[0]?.id) {
-      dispatch(getCats({ category: categories.categories[0].id, page: 1 }));
+      dispatch(getCats({ category: categories.categories[0].id, page: 0 }));
     }
   }, [categories, dispatch]);
   return (
-    <Layout>
+    <Layout hasSidebar>
       <CatList />
     </Layout>
   );

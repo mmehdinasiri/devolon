@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 const size = {
   mobile: "576px",
@@ -40,15 +40,45 @@ export const Aside = styled.aside`
   top: ${({ theme }) => theme.sizes.headerHight}px;
   left: 0;
 `;
-export const MainContent = styled.main`
+export const MainContent = styled.main<{ hasSidebar?: boolean }>`
   margin: ${({ theme }) => theme.sizes.headerHight}px 0;
   padding-top: 1rem;
-  width: calc(100% - ${({ theme }) => theme.sizes.sideBarWidth}px);
-  float: right;
+  ${({ hasSidebar }) =>
+    hasSidebar &&
+    css`
+      float: right;
+      width: calc(100% - ${({ theme }) => theme.sizes.sideBarWidth}px);
+      /* stylelint-disable-next-line*/
+    `}
 `;
+
 export const Container = styled.div`
+  text-align: center;
   position: relative;
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media ${device.mobile} {
+    max-width: 540px;
+  }
+  @media ${device.tablet} {
+    max-width: 720px;
+  }
+  @media ${device.laptop} {
+    max-width: 960px;
+  }
+  @media ${device.desktop} {
+    max-width: 1140px;
+  }
+  @media ${device.desktopL} {
+    max-width: 1320px;
+  }
+`;
+export const ContainerWithSidebar = styled.div`
+  position: relative;
+  width: 100%;
+  text-align: center;
   margin-right: auto;
   margin-left: auto;
 

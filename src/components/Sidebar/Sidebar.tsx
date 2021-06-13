@@ -12,7 +12,7 @@ const SideBar: FC = () => {
 
   const handelSelectCategory = (id: number) => {
     dispatch(reset());
-    dispatch(getCats({ category: id, page: 1 }));
+    dispatch(getCats({ category: id, page: 0 }));
   };
   return (
     <Aside>
