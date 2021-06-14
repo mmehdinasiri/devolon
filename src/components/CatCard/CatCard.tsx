@@ -10,7 +10,7 @@ const CatCard: FC<ICatCardProps> = ({ catImg, catId }) => {
   return (
     <StyledCatCard>
       <Image src={catImg} alt="cat-image" ratio="4-3" radiusTop />
-      <CatCardTitle>Cat Id: {catId}</CatCardTitle>
+      <CatCardTitle data-testid="cardCatId">Cat Id: {catId}</CatCardTitle>
     </StyledCatCard>
   );
 };

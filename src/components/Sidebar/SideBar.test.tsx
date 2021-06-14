@@ -5,10 +5,13 @@ import { renderWithRedux } from "src/Utils/renderWithRedux";
 import Sidebar from "./Sidebar";
 
 describe("test category reducer", () => {
-  test("check sidebar title exist", () => {
+  beforeEach(() => {
     renderWithRedux(<Sidebar />, {
       initialState: { categories: {} },
     });
+  });
+
+  test("check sidebar title exist", () => {
     const title = screen.getByTestId("sidebar-title");
     expect(title).toBeTruthy();
   });
@@ -20,9 +23,6 @@ describe("test category reducer", () => {
       error: "",
     };
 
-    renderWithRedux(<Sidebar />, {
-      initialState: { categories: {} },
-    });
     let sidebarItem = document.querySelectorAll("li");
     expect(sidebarItem.length === 0).toBeTruthy();
 

@@ -6,15 +6,16 @@ import Button from "./Button";
 describe("test category reducer", () => {
   const buttonLabel = "button label";
   const testFunction = jest.fn();
+  beforeEach(() => {
+    renderWithRedux(<Button label={buttonLabel} clickHandler={testFunction} />);
+  });
 
   test("check button label exist", () => {
-    renderWithRedux(<Button label={buttonLabel} clickHandler={testFunction} />);
     const button = screen.getByTestId("btn");
     expect(button).toHaveTextContent(buttonLabel);
   });
 
   test("check function runs after click button", () => {
-    renderWithRedux(<Button label={buttonLabel} clickHandler={testFunction} />);
     const button = screen.getByTestId("btn");
     fireEvent.click(button);
     expect(testFunction).toHaveBeenCalled();
