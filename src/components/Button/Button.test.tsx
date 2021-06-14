@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
-import { render, fireEvent, screen } from "@testing-library/react";
-import theme from "src/theme/theme";
-import { ThemeProvider } from "styled-components";
+import { fireEvent, screen } from "@testing-library/react";
+import { renderWithRedux } from "src/Utils/renderWithRedux";
 import Button from "./Button";
 
 describe("test category reducer", () => {
@@ -9,21 +8,13 @@ describe("test category reducer", () => {
   const testFunction = jest.fn();
 
   test("check button label exist", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <Button label={buttonLabel} clickHandler={testFunction} />
-      </ThemeProvider>
-    );
+    renderWithRedux(<Button label={buttonLabel} clickHandler={testFunction} />);
     const button = screen.getByTestId("btn");
     expect(button).toHaveTextContent(buttonLabel);
   });
 
   test("check function runs after click button", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <Button label={buttonLabel} clickHandler={testFunction} />
-      </ThemeProvider>
-    );
+    renderWithRedux(<Button label={buttonLabel} clickHandler={testFunction} />);
     const button = screen.getByTestId("btn");
     fireEvent.click(button);
     expect(testFunction).toHaveBeenCalled();

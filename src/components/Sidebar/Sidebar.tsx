@@ -22,11 +22,12 @@ const SideBar: FC = () => {
   return (
     <Aside>
       {categoriesStore.loading && <Loading />}
-      <SidebarTitle>Categories</SidebarTitle>
+      <SidebarTitle data-testid="sidebar-title">Categories</SidebarTitle>
       <CategoryList>
         {categoriesStore.categories &&
           categoriesStore.categories.map((item: ICatCategory) => (
             <CategoryItem
+              data-testid="sidebar-item"
               className={selectedCategory.id === item.id ? "active" : ""}
               key={item.id}
               onClick={() => handelSelectCategory(item)}
