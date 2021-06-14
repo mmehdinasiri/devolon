@@ -24,6 +24,7 @@ const Image: FC<IImagePops> = ({ src, alt, ratio, radiusTop }) => {
           onError={() => {
             setImageError(true);
           }}
+          data-testid="image"
           onLoad={() => {
             setImageLoad(true);
           }}

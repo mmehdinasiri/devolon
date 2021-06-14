@@ -3,7 +3,7 @@ import { screen } from "@testing-library/react";
 import { renderWithRedux } from "src/Utils/renderWithRedux";
 import CatCard from "./CatCard";
 
-describe("test category reducer", () => {
+describe("test catCard component", () => {
   beforeEach(() => {
     renderWithRedux(<CatCard catImg="pathToImg" catId="1" />);
   });

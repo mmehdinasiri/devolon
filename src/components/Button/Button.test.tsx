@@ -3,7 +3,7 @@ import { fireEvent, screen } from "@testing-library/react";
 import { renderWithRedux } from "src/Utils/renderWithRedux";
 import Button from "./Button";
 
-describe("test category reducer", () => {
+describe("test button component", () => {
   const buttonLabel = "button label";
   const testFunction = jest.fn();
   beforeEach(() => {
