@@ -6,10 +6,11 @@ const Intro: FC = () => {
     <>
       <H1>Welcome to Devolon cats test project</H1>
       <Hint>
-        Technologies that was used: react, redux-toolkit, react-router-dom and
+        Technologies that i used: react, redux-toolkit, react-router-dom and
         styled-component as ui kit.
       </Hint>
       <p>This is first time that i used style-component and test for my app.</p>
+      <p>I hope you enjoy the app.</p>
       <StyledLink to="/cats">Check Cats App</StyledLink>
     </>
   );
